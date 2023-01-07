@@ -1,0 +1,13 @@
+0b7126e0c6e86d3ec295a72f5aa6e0bd
+::res://::1673125382
+611Bit.ttf::FontFile::2193022713871377945::1673111383::1673111383::1::::<><>::
+HammersmithOne-Regular.ttf::FontFile::2975227074853272062::1673111443::1673111443::1::::<><>::
+main.gd::GDScript::-1::1673112819::0::1::::<>Control<>::
+main.tscn::PackedScene::3862573765286581086::1673112819::0::1::::<><>::res://main.gd<>uid://d3fr2dbnckbfw
+vessel_screen.gd::GDScript::-1::1673112207::0::1::::<>Control<>::
+vessel_screen.tscn::PackedScene::6796396400536945976::1673112709::0::1::::<><>::uid://binhs44a2xmiw<>res://vessel_screen.gd<>uid://83hq7twufm2e
+::res://textures/::1673112316
+arrow.png::CompressedTexture2D::2374489719945591858::1673112179::1673112197::1::::<><>::
+arrow_forbidden.png::CompressedTexture2D::6465410656583714063::1673112179::1673112197::1::::<><>::
+gradient.png::CompressedTexture2D::9135952126735553300::1673112315::1673112316::1::::<><>::
+icon.svg::CompressedTexture2D::2301866149982214302::1673110766::1673112199::1::::<><>::
