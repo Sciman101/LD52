@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvbca4tunrrpe"]
+[gd_scene load_steps=5 format=3 uid="uid://bvbca4tunrrpe"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_b82f8"]
 [ext_resource type="Texture2D" uid="uid://d3fr2dbnckbfw" path="res://textures/gradient.png" id="1_noy8l"]
 [ext_resource type="Script" path="res://garden.gd" id="2_8n20k"]
+[ext_resource type="PackedScene" uid="uid://c33hwkbvsj3pc" path="res://vessel_screen.tscn" id="3_2xngh"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -14,7 +15,6 @@ grow_vertical = 2
 script = ExtResource("1_b82f8")
 
 [node name="Garden" type="GridContainer" parent="."]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -30,7 +30,6 @@ columns = 4
 script = ExtResource("2_8n20k")
 
 [node name="Button" type="Button" parent="Garden"]
-layout_mode = 2
 offset_right = 77.0
 offset_bottom = 77.0
 size_flags_horizontal = 3
@@ -38,7 +37,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button2" type="Button" parent="Garden"]
-layout_mode = 2
 offset_left = 81.0
 offset_right = 158.0
 offset_bottom = 77.0
@@ -47,7 +45,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button3" type="Button" parent="Garden"]
-layout_mode = 2
 offset_left = 162.0
 offset_right = 239.0
 offset_bottom = 77.0
@@ -56,7 +53,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button4" type="Button" parent="Garden"]
-layout_mode = 2
 offset_left = 243.0
 offset_right = 320.0
 offset_bottom = 77.0
@@ -65,7 +61,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button5" type="Button" parent="Garden"]
-layout_mode = 2
 offset_top = 81.0
 offset_right = 77.0
 offset_bottom = 158.0
@@ -74,7 +69,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button6" type="Button" parent="Garden"]
-layout_mode = 2
 offset_left = 81.0
 offset_top = 81.0
 offset_right = 158.0
@@ -84,7 +78,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button7" type="Button" parent="Garden"]
-layout_mode = 2
 offset_left = 162.0
 offset_top = 81.0
 offset_right = 239.0
@@ -94,7 +87,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button8" type="Button" parent="Garden"]
-layout_mode = 2
 offset_left = 243.0
 offset_top = 81.0
 offset_right = 320.0
@@ -104,7 +96,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button9" type="Button" parent="Garden"]
-layout_mode = 2
 offset_top = 162.0
 offset_right = 77.0
 offset_bottom = 239.0
@@ -113,7 +104,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button10" type="Button" parent="Garden"]
-layout_mode = 2
 offset_left = 81.0
 offset_top = 162.0
 offset_right = 158.0
@@ -123,7 +113,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button11" type="Button" parent="Garden"]
-layout_mode = 2
 offset_left = 162.0
 offset_top = 162.0
 offset_right = 239.0
@@ -133,7 +122,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button12" type="Button" parent="Garden"]
-layout_mode = 2
 offset_left = 243.0
 offset_top = 162.0
 offset_right = 320.0
@@ -143,7 +131,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button13" type="Button" parent="Garden"]
-layout_mode = 2
 offset_top = 243.0
 offset_right = 77.0
 offset_bottom = 320.0
@@ -152,7 +139,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button14" type="Button" parent="Garden"]
-layout_mode = 2
 offset_left = 81.0
 offset_top = 243.0
 offset_right = 158.0
@@ -162,7 +148,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button15" type="Button" parent="Garden"]
-layout_mode = 2
 offset_left = 162.0
 offset_top = 243.0
 offset_right = 239.0
@@ -172,7 +157,6 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Button16" type="Button" parent="Garden"]
-layout_mode = 2
 offset_left = 243.0
 offset_top = 243.0
 offset_right = 320.0
@@ -182,15 +166,16 @@ size_flags_vertical = 3
 text = "Plot"
 
 [node name="Inventory" type="Label" parent="."]
-layout_mode = 1
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 144.0
 offset_bottom = 272.0
 text = "Seeds: 3"
 
+[node name="Vessel_Screen" parent="." instance=ExtResource("3_2xngh")]
+visible = false
+
 [node name="NarratonPanel" type="NinePatchRect" parent="."]
-layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -208,7 +193,6 @@ patch_margin_right = 20
 patch_margin_bottom = 20
 
 [node name="Narration" type="Label" parent="NarratonPanel"]
-layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0

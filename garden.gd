@@ -31,6 +31,7 @@ func grow_all():
 			set_tile(i,CELL_GRAVE)
 
 func set_tile(index:int,cell:int):
+	if index < 0 or index >= cells.size(): return
 	cells[index] = cell
 	if cell == CELL_PLANTED:
 		tiles[index].text = "Planted"
@@ -40,6 +41,7 @@ func set_tile(index:int,cell:int):
 		tiles[index].text = ""
 
 func tile_empty(index:int):
+	if index < 0 or index >= cells.size(): return true
 	return cells[index] == CELL_EMPTY
 
 func set_interactive(interactive:bool):
