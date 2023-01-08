@@ -84,33 +84,21 @@ func setup_lists(yours:Array,theirs:Array):
 # Will this vessel pass on successfully?
 func score_vessel():
 	
-	var angry_count := 0
-	var apathy_count := 0
-	var agony_count := 0
-	var fear_count := 0
+	var score = 0
 	
 	for button in their_list.get_children():
 		var text = button.text.to_lower()
 		match text:
-			'angry': angry_count += 1
-			'apathy': apathy_count += 1
-			'agony': agony_count += 1
-			'fear': fear_count += 1
+			'angry': score -= 1
+			'apathy': score -= 1
+			'agony': score -= 1
+			'fear': score -= 1
 			
-			'joy':
-				if angry_count > 0 and apathy_count == 0: angry_count -= 1
-				else: apathy_count -= 1
-			
-			'comfort':
-				if angry_count > 0 and agony_count == 0: angry_count -= 1
-				else: agony_count -= 1
-			
-			'hope':
-				if angry_count > 0 and fear_count == 0: angry_count -= 1
-				else: fear_count -= 1
+			'joy': score += 1
+			'comfort': score += 1
+			'hope': score += 1
 	
-	var score = angry_count + apathy_count + agony_count + fear_count
-	return -score # more is better
+	return score # more is better
 
 func get_their_inventory():
 	var list = []

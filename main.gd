@@ -5,6 +5,17 @@ const VESSEL_PRESETS = [
 	['this vessels time was short but joyous','Joy'],
 	['this vessels death was sudden and unfortunate','Joy','Fear','Fear'],
 	['witnessing this vessel fills you with dread','Agony','Agony','Agony','Agony'],
+	['this vessel died alone','Fear','Fear'],
+	['this vessel seems at peace','Comfort','Apathy','Hope'],
+	['this vessel had nothing to lose','Anger','Joy','Comfort'],
+	['the vessel feels like your favorite blanket','Comfort','Comfort','Joy'],
+	['the vessel hovers in front of you, motionless','Comfort','Fear'],
+	['it looks like someone you saw the other day','Joy','Fear','Anger'],
+	['you wonder who this was','Joy','Hope','Joy'],
+	['your rusty shovel unturns another one','Agony','Hope','Hope','Hope'],
+	['you can feel this vessel smiling','Joy','Joy','Joy'],
+	['the vessel feels warm','Comfort','Hope'],
+	['the vessel hovers above the floor','Hope','Fear'],
 ]
 
 # Narration stuff
@@ -95,7 +106,7 @@ func gameloop():
 		if seed_count != 0:
 			seeds = seed_count
 			player_inventory = []
-			update_inventory()
+			update_inventory(false)
 
 
 func tutorial_1():
