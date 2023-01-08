@@ -1,4 +1,5 @@
+res://default_bus_layout.tres
 res://main.tscn
 res://main.gd
-res://garden.gd
 res://vessel_screen.tscn
+res://vessel_screen.gd

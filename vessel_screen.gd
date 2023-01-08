@@ -1,6 +1,7 @@
 extends Control
 
 const PLAYER_INVENTORY_LIMIT := 4
+const POSITIVES = ['Hope','Joy','Comfort']
 
 @onready var ItemButton = preload("res://item_button.tscn")
 
@@ -23,6 +24,8 @@ const PRONOUNS = ["Him","Her","Them","It"]
 @onready var arrow = $Hud/Arrow
 @onready var player_title = $Hud/PlayerPane/Title
 @onready var complete_button = $Hud/CompleteButton
+
+@onready var sfx_clink = $Clink
 
 @onready var your_list = $Hud/PlayerPane/List
 @onready var their_list = $Hud/VesselPane/List
@@ -68,6 +71,10 @@ func setup_lists(yours:Array,theirs:Array):
 	for text in yours:
 		var btn = ItemButton.instantiate()
 		btn.text = text
+		if text in POSITIVES:
+			btn.modulate = Color.WHITE
+		else:
+			btn.modulate = Color.RED
 		your_list.add_child(btn)
 		btn.button_up.connect(_item_clicked.bind(btn))
 		btn.mouse_entered.connect(_item_hovered.bind(btn))
@@ -76,6 +83,10 @@ func setup_lists(yours:Array,theirs:Array):
 	for text in theirs:
 		var btn = ItemButton.instantiate()
 		btn.text = text
+		if text in POSITIVES:
+			btn.modulate = Color.WHITE
+		else:
+			btn.modulate = Color.RED
 		their_list.add_child(btn)
 		btn.button_up.connect(_item_clicked.bind(btn))
 		btn.mouse_entered.connect(_item_hovered.bind(btn))
@@ -97,6 +108,8 @@ func score_vessel():
 			'joy': score += 1
 			'comfort': score += 1
 			'hope': score += 1
+	if their_list.get_children().is_empty():
+		score -= 1
 	
 	return score # more is better
 
@@ -114,6 +127,7 @@ func get_your_inventory():
 
 func randomize_vessel():
 	animation.play('Idle')
+	vessel_rect.self_modulate = Color.WHITE
 	vessel_title.text = PRONOUNS.pick_random()
 	vessel_rect.texture = vessel_textures.pick_random()
 
@@ -136,11 +150,13 @@ func _item_clicked(item):
 		their_list.add_child(item)
 		arrow.visible = false
 		count -= 1
+		sfx_clink.play()
 	else:
 		if count < PLAYER_INVENTORY_LIMIT:
 			their_list.remove_child(item)
 			your_list.add_child(item)
 			count += 1
+			sfx_clink.play()
 		arrow.visible = false
 	
 	player_title.text = "You (%d/%d)" % [count,PLAYER_INVENTORY_LIMIT]

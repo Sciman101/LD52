@@ -1,26 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c33hwkbvsj3pc"]
+[gd_scene load_steps=10 format=3 uid="uid://c33hwkbvsj3pc"]
 
 [ext_resource type="FontFile" uid="uid://binhs44a2xmiw" path="res://HammersmithOne-Regular.ttf" id="1_4kklu"]
 [ext_resource type="Script" path="res://vessel_screen.gd" id="1_cawn2"]
 [ext_resource type="Texture2D" uid="uid://83hq7twufm2e" path="res://textures/arrow.png" id="2_h08md"]
 [ext_resource type="Texture2D" uid="uid://capfcu7sdfwxm" path="res://textures/vessels/vessel1.png" id="4_oji2e"]
-
-[sub_resource type="Animation" id="Animation_6h1ea"]
-resource_name = "Idle"
-length = 3.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Vessel:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-65, -180), Vector2(-65, -170), Vector2(-65, -180)]
-}
+[ext_resource type="AudioStream" uid="uid://bqhmg2mfwuswg" path="res://sfx/clink.wav" id="5_rh87v"]
 
 [sub_resource type="Animation" id="Animation_dtc01"]
 resource_name = "Broken"
@@ -39,11 +23,33 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_6h1ea"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vessel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-65, -180), Vector2(-65, -170), Vector2(-65, -180)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jd3oc"]
 _data = {
 "Broken": SubResource("Animation_dtc01"),
 "Idle": SubResource("Animation_6h1ea")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hncrl"]
+streams_count = 1
+stream_0/stream = ExtResource("5_rh87v")
+stream_0/weight = 1.0
 
 [node name="Vessel_Screen" type="Control"]
 layout_mode = 3
@@ -55,7 +61,6 @@ grow_vertical = 2
 script = ExtResource("1_cawn2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -64,7 +69,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.784314)
 
 [node name="VesselContainer" type="Control" parent="."]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -78,7 +83,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Vessel" type="TextureRect" parent="VesselContainer"]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -101,7 +105,7 @@ libraries = {
 }
 
 [node name="Hud" type="Control" parent="."]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -109,7 +113,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlayerPane" type="Control" parent="Hud"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_left = 80.0
 offset_top = 40.0
@@ -120,7 +124,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 
 [node name="Title" type="Label" parent="Hud/PlayerPane"]
-layout_mode = 0
 offset_right = 206.0
 offset_bottom = 44.0
 grow_horizontal = 2
@@ -131,7 +134,6 @@ text = "You"
 horizontal_alignment = 1
 
 [node name="List" type="VBoxContainer" parent="Hud/PlayerPane"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -140,7 +142,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Arrow" type="TextureRect" parent="Hud"]
-layout_mode = 0
 offset_left = 290.0
 offset_top = 40.0
 offset_right = 370.0
@@ -149,7 +150,7 @@ texture = ExtResource("2_h08md")
 stretch_mode = 3
 
 [node name="VesselPane" type="Control" parent="Hud"]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 0
 offset_left = 374.0
 offset_top = 40.0
@@ -160,7 +161,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 
 [node name="Title" type="Label" parent="Hud/VesselPane"]
-layout_mode = 0
 offset_right = 206.0
 offset_bottom = 44.0
 grow_horizontal = 2
@@ -171,7 +171,6 @@ text = "Them"
 horizontal_alignment = 1
 
 [node name="List" type="VBoxContainer" parent="Hud/VesselPane"]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -180,7 +179,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CompleteButton" type="Button" parent="Hud"]
-layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -193,5 +191,8 @@ offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Done"
+
+[node name="Clink" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_hncrl")
 
 [connection signal="pressed" from="Hud/CompleteButton" to="." method="_on_complete_button_pressed"]
